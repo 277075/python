@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+<h1>Upload Photographs</h1>
+  	{% if session['username'] %}
+
+
+    <div class="container">
+    	<div class="row">
+    		<div class="col-md-4 col-md-offset-4">
+          <form action = "/create" method = "POST"
+             enctype = "multipart/form-data">
+            <div class="form-group">
+              <input type="file" name="uploaded_image" />
+              <br />
+              <label for="description" name="descriptionlabel">Enter a brief description of the image</label>
+              <textarea input type="text" name="description" rows="4" cols="60" name="description"></textarea>
+              <br />
+              <label for="tag1" name="taglabel">Enter tags that your image can be searched by:</label>
+              <br />
+
+              <input type="text" name="tag1"/>
+              <br />
+              <input type="text" name="tag2"/>
+              <br />
+              <input type="text" name="tag3"/>
+    				</div>
+    				<button type="submit" class="btn btn-primary">Upload</button>
+    			</form>
+
+    {% else %}
+    <h2>Please <a href="{{ url_for('loginview') }}">log in</a> to browse or upload photos.</h2>
+
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1> Search results for: {{request.form['searchbar']}} </h1>
+
+<div class="card-deck"
+{% for search_result in search_results %}
+<div class="card col-lg-3 col-md-4 col-xs-6 thumb">
+	<div class="card" style="margin:10px; padding:10px;">
+<img class="card-img-top" src="{{search_result["url"]}}" alt="Card image cap" style="width: 400px;;">
+<div class="card-body">
+<h5 class="card-title">Posted by: {{search_result["postedby"]}}</h5>
+<p class="card-text">Description: {{search_result["description"]}}</p>
+<p class="card-text">Tags: {{search_result["tag1"]}}, {{search_result["tag2"]}}, {{search_result["tag3"]}}</p>
+<p class="card-text"><small class="text-muted">Posted at: {{search_result["postedtime"]}}></small></p>
+</div>
+</div>
+</div>
+<br />
+
+{% endfor %}
+</div>
+
+
+
+{% endblock %}}

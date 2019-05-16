@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+	{% if session['username'] %}
+	<div>
+            <h1>You are already logged in as <strong>{{session['username']}}</strong>.<br/></h1>
+            <br/>
+						<h2>Feel free to <a href="{{ url_for('uploadphotoview') }}">upload </a>or <a href="{{ url_for('searchphotoview') }}">search photos</a></h2>
+						<br />
+
+            <h3><a href="{{ url_for('clearsession') }}">Sign out</a></h3>
+		</div>
+            {% else %}
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<form method=Post action="{{ url_for('login') }}">
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" name="username" placeholder="username">
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" name="password" placeholder="password">
+				</div>
+				<button type="submit" class="btn btn-primary btn-block">Log In</button>
+			</form>
+			<br>
+			<div>
+				Don't have an account? <a href="{{ url_for('register') }}">Sign up here</a>
+			</div>
+		</div>
+	</div>
+
+{% endif %}
+</div>
+{% endblock %}

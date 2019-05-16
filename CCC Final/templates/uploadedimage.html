@@ -1,0 +1,5 @@
+{% extends "layout.html" %}
+{% block body %}
+<h2>Image uploaded successfully!</h2>
+<img src="{{ url_for('viewuploadedimage', filename=filename) }}">
+{% endblock %}

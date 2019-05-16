@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="container">
+<h1>Browse Photographs</h1>
+  	{% if session['username'] %}
+
+    <h2><a href="{{ url_for('viewall') }}">View all images</a><br /></h2>
+    <h2><a href="{{ url_for('useruploads') }}">View {{ session['username'] }}'s' images</a></h2>
+    <hr>
+    <h1>Search for an image</h1>
+
+
+        <form method=Post action="{{ url_for('photosearch') }}">
+          <div class="form-group">
+            <table style="padding: 10px">
+              <tr>
+            <td style="padding: 10px"><label for="username"><h2>Enter a keyword to search by:</h2></label></td>
+            <td style="padding: 10px"><input type="text" class="form-control" name="searchbar" placeholder="Enter a keyword"></td>
+
+          </div>
+        </div>
+      </div>
+
+			<td style="padding: 10px"><button type="submit" class="btn btn-primary">Search</button></td></tr>
+      </table>
+      </form>
+
+
+
+    {% else %}
+    <h2>Please <a href="{{ url_for('loginview') }}">log in</a> to browse or upload photos.</h2>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

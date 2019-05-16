@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="container">
+
+<div class="jumbotron text-center">
+
+	{% if session['username'] %}
+             <h1><strong>Hello {{session['username']}}</strong></h1>
+						 <br />
+						 <h2>Feel free to <a href="{{ url_for('uploadview') }}">upload </a>or <a href="{{ url_for('searchphotoview') }}">search photos</a></h2>
+						 <br />
+					 	<p><a href="{{ url_for('clearsession') }}">Signout</a></p>
+
+            {% else %}
+
+			<h1> Welcome to Cirrostratus Cloud Chesterfield</h1>
+	<br>
+	<h2>Please <a href="{{ url_for('loginview') }}">log in</a> to browse or upload photos.</h2>
+
+{% endif %}
+</div>
+</div>
+{% endblock %}
